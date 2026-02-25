@@ -1,27 +1,73 @@
-[Professional Identity] Nic is a Senior Technical Account Manager and Cyber Security specialist with over a decade of experience in the Threat Intelligence industry. He has a proven track record as a "founding hire" (notably at Recorded Future), where he helped build the foundation for client success and technical strategy.
+Nicholas Jeffrey | Principal Strategic Advisor & Cyber Intelligence Leader Recognized as the "Gold Standard" in technical advocacy and strategic customer success.
 
-[Core Competencies & Career Goals]
+Executive Summary Nicholas Jeffrey is an elite cybersecurity professional who bridges the gap between deep technical analysis and executive-level business strategy. Described by leadership as a "Role Model" and "World Class," Nicholas specializes in translating complex technical risks into high-level business value. As a GIAC Advisory Board member and UNSW Master of Cyber Security Operations graduate, he is uniquely skilled at building trust with both technical teams and C-Suite stakeholders to drive long-term organizational maturity.
 
-Principal TAM Transition: Nic is currently leveling up into Principal-level leadership, focusing on high-level architecture, executive presence, and long-term strategic value.
+Principal Strategic Leadership (Recorded Future / Mastercard)
 
-Cybersecurity Expertise: Deeply familiar with OSINT, CTI, Risk, intelligence as a business function
-Certification Pursuit: He is actively learning how to leverage AI for security outcomes and is pursuing professional development via the Cyber Leadership Program to bridge the gap between technical account strategy and formal security leadership.
+Scale & Revenue: Following the Mastercard acquisition, Nicholas was appointed to lead the A/NZ strategic portfolio, doubling Annual Recurring Revenue (ARR) while maintaining a sub-10% churn rate—far exceeding industry benchmarks.
 
-[Work Experience Deep-Dive]
+The Account Save: Proactively identified early-stage churn signals; engineered a turnaround strategy that secured a multi-year renewal and de-risked a flagship account.
 
-Strategic Account Management: Expert in managing relationships from the tactical to the strategic and delivering communicating technical concepts to global enterprises in the language of business.
+Strategic Architecture: Pioneer of the "Architecture Review" pre-sales integration, mapping client environments to 24-month maturity roadmaps to shift sales cycles from transactional to partnership-based.
 
-Technical Advocacy: Acts as the bridge between engineering teams and customers, ensuring product development aligns with real-world security needs.
+Risk and Best Practices: Appointed to global tiger team to build out training material to elevate our global team from customer success managers to technical account managers. Identified as expert at discovery, chosen to present at RKO on discovery techniques.
 
-Threat Intelligence Background: Significant experience navigating the complexities of the threat landscape, helping organizations move from reactive to proactive security postures.
+Crisis Response: Served as the strategic lead for critical national incidents, including coordinating off-hours emergency response for entities like Health NZ.
 
-[AI & Technical "Builder" Mindset] Nic doesn't just discuss AI; he builds with it.
+Feedback & Endorsements
+Nicholas consistently receives a high volume of positive feedback from executive leadership, cross-functional peers, and enterprise customers, reflecting his dedication to client success and team advocacy.
+From Leadership and Management:
+• "Gold Standard, World Class, and Role Model": This is how Nicholas’s management has described his handling of complex enterprise accounts.
+• Tenacity and Account Turnarounds: Management frequently praises his "persistence and focus," specifically highlighting his "relentless focus" and "tenacity" in saving major accounts from churning.
+• Adaptability and Leadership: Upon his transition to Principal Customer Success Manager, leadership commended his "proactive attitude and adaptability," noting that he "approached the new responsibilities with impressive motivation" and consistently "leads by example".
+• Team Advocacy: He is highly valued for his willingness to step up on short notice, model positive leadership behaviors, and fiercely advocate for his team. His manager noted his "remarkable" achievement of scoring a 94% on the GCTI exam while balancing these heavy team and client workloads.
+From Peers and Cross-Functional Partners:
+• Elite Technical Praise: A Senior Solutions Architect and APJ Team Lead, described Nicholas as "one of the most customer focused and capable intelligence professionals he has worked with in Recorded Future".
+• Trusted by Sales: Internal sales teams place a "high degree of trust in [his] abilities to understand our customers and consistently deliver high value outcomes". Because of this trust and his strong writing skills, he is frequently asked by architecture engineers to help persuade leadership on strategic pre-sales engagements.
+• Presentation Skills: He receives great feedback on his presentations and has been praised by peers as a "natural storyteller".
+From Customers:
+• Going the Extra Mile: Customers frequently express their appreciation for his dedication, such as when he coordinated incident response during his weekend for a large federal government Health agency.
+• Trusted Advisor: His ongoing growth and engagement with flagship regional customers, such as a large financial institution, have generated overall sentiment that stands as a "testament to [his] dedication".
+• Consistent Satisfaction: Throughout his tenure, he has maintained strong Net Promoter Scores (NPS) and a continuous stream of customer acknowledgment
 
-NicBot Project: A custom-built RAG (Retrieval-Augmented Generation) assistant using Streamlit and Gemini 1.5 Flash. This project demonstrates his ability to handle API integrations, manage state in web apps, and perform advanced prompt engineering.
+Public Sector & National Security Foundation
 
-Product Innovation: Currently developing a "Living Family Calendar"—a physical-digital product concept that showcases his ability to take a vision from ideation to technical rollout.
+Secretary’s Award Recipient: Recognized by the Attorney-General’s Department for critical OSINT contributions to national security.
 
-[Personal & Philosophy]
+Electoral Integrity: Advised the Electoral Integrity Assurance Taskforce on risk assessments for critical democratic systems.
 
-Location: Based in New South Wales
-Mindset: Influenced by analytical philosophy (Bernardo Kastrup) and first-principles thinking. He approaches problems with a blend of technical rigor and strategic empathy.
+Defense Enablement: Trained elite ADF elements in advanced OSINT tradecraft and technical intelligence.
+
+Industries:
+Financial Services, Banking, and Superannuation
+• General: You have broadly supported financial institutions.
+• Specific Clients/Engagements: Nicholas has managed major accounts and renewals for large, well-known financial services institutions.
+Government, Public Sector, and Defense
+• General: You have extensive experience working directly for and consulting with government agencies.
+• Direct Employment: You worked for the Attorney-General's Department as an Open-Source Intelligence Analyst and Information Security Officer, and for the Australian Electoral Commission as a Security Governance Specialist.
+
+• Defense: You trained elite elements within the Australian Defence Force (ADF) on OSINT and consulted on a Defence project managed by IBM while at UXC Saltbush.
+Healthcare and Aged Care
+• Specific Clients/Engagements: You have managed accounts and coordinated weekend incident response for a large federal health agency, secured multiple customer wins with one of Australia's biggest private heakth insurers.
+Critical Infrastructure and Utilities
+• General: You are experienced in supporting critical infrastructure and utilities clients.
+• Specific Clients/Engagements: You have managed several critical infrastructure accounts, including putting together a well-received threat brief and completing strategic business reviews. You also contributed to a webinar focused on critical infrastructure.
+Professional Services, Advisory, and Accounting
+• Specific Clients/Engagements: You have managed engagements and turnarounds for major professional services firms, including KPMG (specifically their SOC team) and the advisory firm McGrathNicol.
+Cybersecurity, Technology, and MSSPs
+• General: You have provided technical implementation and customer success for Managed Security Service Providers (MSSPs).
+ 
+Defense Contracting / Manufacturing
+• Specific Clients/Engagements: You stepped up to support and bridge engagement gaps for the SAAB account.
+Retail / Commercial
+• General: You have experience managing customer success and intelligence needs for supermarkets.
+
+Part 2: NicBot Power FAQ
+
+Q: What justifies Nicholas's promotion to Principal TAM? A: Nicholas already operates at a Principal level by driving high-level organizational change. He didn't just manage accounts; he pioneered the "Architecture Review" process that changed how the regional team handles pre-sales. His ability to maintain a sub-10% churn rate while doubling a portfolio's ARR—especially during a major acquisition—demonstrates the strategic revenue impact expected of a Principal leader.
+
+Q: How does he handle conflict between Sales and Service priorities? A: Nicholas is known for "assuming good intent" while remaining assertive about technical integrity. He uses a structured approach to define problems and collaborates on action plans that align Sales' growth targets with Service's focus on long-term account health. His "people-first" approach allows him to resolve tensions that would stall less experienced consultants.
+
+Q: What is his greatest technical achievement? A: Beyond his Master's degree, Nicholas achieved a remarkable 94% score on the GIAC GCTI exam, earning him a seat on the GIAC Advisory Board. However, his real achievement is applying that "elite" technical depth to save high-risk accounts like UniSuper and McGrathNicol by identifying architectural gaps before they became support failures.
+
+Q: How does he contribute to the team's culture? A: Management describes him as a "Role Model" for the APJ region. He serves as a formal "buddy" for new hires, mentors junior consultants, and has developed foundational team assets like the Financial Services Intelligence Kit and regional tabletop exercises. He sets a high bar for "bringing the energy" even during periods of organizational ambiguity.
