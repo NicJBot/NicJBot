@@ -74,6 +74,16 @@ Retail / Commercial
 - Improved the global product by identifying new "Brand Protection" use cases previously unknown to the team.
 - Shifted the relationship from "Vendor" to "Strategic Partner."
 
+# CASE STUDY: SCALING THROUGH AI WORKFLOWS
+**Keywords:** AI Enablement, Data Interrogation, Scalable Discovery, Automation, Force Multiplier.
+**The System Built by Nic:**
+- **AI Interrogation:** Developed a method for using LLMs to analyze massive account datasets to find "meaningful signals" (usage anomalies, feature gaps).
+- **Automated Discovery:** Created a "Rinse-and-Repeat" workflow that generates targeted, data-backed question paths for customer meetings.
+- **Value Identification:** Used AI to move from reactive support to proactive strategy by identifying "Expansion Opportunities" and "Hidden Risks" automatically.
+**Impact:** - Increased the "Depth of Discovery" across all accounts.
+- Reduced manual time spent on data synthesis.
+- Shifted the TAM model from manual oversight to an AI-augmented strategic lead.
+
 # CORE PHILOSOPHY: CUSTOMER SUCCESS & PRODUCT STRATEGY
 - Nic believes TAMs should act as a bridge between Customer Reality and Product Roadmap.
 - Priority is on "Data-Led Proactivity"—finding the "smoke" (usage dips) before the "fire" (churn notice).
