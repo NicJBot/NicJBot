@@ -1,25 +1,19 @@
 import streamlit as st
-import google.generativeai as genai
+from google import genai
 
 # 1. Page Setup
 st.set_page_config(page_title="NicBot | AI Career Assistant", page_icon="🤖")
 st.title("🤖 Meet NicBot")
 
-# 2. Setup Gemini (Direct Native Implementation)
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+# 2. Setup New Gemini Client
+# This uses the latest SDK to avoid 404 versioning errors
+client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
-# Load Bio for context
+# Load Bio
 with open("bio.txt", "r") as f:
     nic_context = f.read()
 
-# 3. Initialize Model with a clear System Instruction
-# We use 'gemini-1.5-flash' but we'll try the 'models/' prefix if it fails
-model = genai.GenerativeModel(
-    model_name='gemini-1.5-flash',
-    system_instruction=f"You are NicBot, a professional career assistant. Use this context: {nic_context}"
-)
-
-# 4. Chat logic
+# 3. Chat Logic
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -33,8 +27,14 @@ if prompt := st.chat_input("Ask about Nic..."):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        # The 'stream=True' can sometimes cause 404s on fresh projects, 
-        # so we'll use a standard call for stability first.
-        response = model.generate_content(prompt)
+        # We use the most stable model name 'gemini-2.0-flash'
+        # and pass the bio as a System Instruction
+        response = client.models.generate_content(
+            model='gemini-2.0-flash',
+            contents=prompt,
+            config={
+                'system_instruction': f"You are NicBot, a career assistant. Use this bio: {nic_context}"
+            }
+        )
         st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
