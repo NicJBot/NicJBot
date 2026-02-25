@@ -39,7 +39,7 @@ except FileNotFoundError:
 # This looks for 'GEMINI_API_KEY' in your Streamlit Secrets
 client = OpenAI(
     api_key=st.secrets["GEMINI_API_KEY"],
-    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai"
 )
 
 # 5. Initialize Chat History
