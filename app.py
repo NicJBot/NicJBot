@@ -1,6 +1,6 @@
 # Change the client initialization to this:
 client = OpenAI(
-    api_key=st.secrets["AIzaSyCy-PG0QXqQvzAw_lhoFT5Iv8D3xuMd0lU"], 
+    api_key=st.secrets["Token goes here"], 
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
 
