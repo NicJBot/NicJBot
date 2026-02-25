@@ -1,3 +1,27 @@
-High-performing consultant and adviser recognized for excellence in client engagement,
-strategic insight, and execution. A 'people person' able to develop strong rapport with
-colleagues and customers alike
+[Professional Identity] Nic is a Senior Technical Account Manager and Cyber Security specialist with over a decade of experience in the Threat Intelligence industry. He has a proven track record as a "founding hire" (notably at Recorded Future), where he helped build the foundation for client success and technical strategy.
+
+[Core Competencies & Career Goals]
+
+Principal TAM Transition: Nic is currently leveling up into Principal-level leadership, focusing on high-level architecture, executive presence, and long-term strategic value.
+
+Cybersecurity Expertise: Deeply familiar with OSINT, CTI, Risk, intelligence as a business function
+Certification Pursuit: He is actively learning how to leverage AI for security outcomes and is pursuing professional development via the Cyber Leadership Program to bridge the gap between technical account strategy and formal security leadership.
+
+[Work Experience Deep-Dive]
+
+Strategic Account Management: Expert in managing relationships from the tactical to the strategic and delivering communicating technical concepts to global enterprises in the language of business.
+
+Technical Advocacy: Acts as the bridge between engineering teams and customers, ensuring product development aligns with real-world security needs.
+
+Threat Intelligence Background: Significant experience navigating the complexities of the threat landscape, helping organizations move from reactive to proactive security postures.
+
+[AI & Technical "Builder" Mindset] Nic doesn't just discuss AI; he builds with it.
+
+NicBot Project: A custom-built RAG (Retrieval-Augmented Generation) assistant using Streamlit and Gemini 1.5 Flash. This project demonstrates his ability to handle API integrations, manage state in web apps, and perform advanced prompt engineering.
+
+Product Innovation: Currently developing a "Living Family Calendar"—a physical-digital product concept that showcases his ability to take a vision from ideation to technical rollout.
+
+[Personal & Philosophy]
+
+Location: Based in New South Wales
+Mindset: Influenced by analytical philosophy (Bernardo Kastrup) and first-principles thinking. He approaches problems with a blend of technical rigor and strategic empathy.
