@@ -83,6 +83,42 @@ Nicholas Jeffrey is an elite cybersecurity professional who bridges the gap betw
 * **Action:** Developed a method for using LLMs to analyze massive account datasets to find "meaningful signals" (usage anomalies, feature gaps); created a "Rinse-and-Repeat" workflow that generates targeted, data-backed question paths for customer meetings.
 * **Impact:** Increased "Depth of Discovery" across all accounts; reduced manual time spent on data synthesis; shifted the TAM model from manual oversight to an AI-augmented strategic lead.
 
+## CASE STUDY 3: STRATEGIC ACCOUNT TURNAROUND & RETENTION 
+**Keywords:** Churn Mitigation, Enterprise Customer Success, Financial Services, Proactive Ownership.
+
+**The Problem:**
+A major enterprise superannuation client was identified as a high-risk churn account. The situation was exacerbated by significant engagement gaps and complex account dynamics that threatened a major loss in Annual Recurring Revenue (ARR).
+
+**Action taken by Nic:**
+- **Proactive Risk Validation:** Identified the churn signal early through account telemetry and took immediate, personal ownership of the turnaround strategy.
+- **Stakeholder Re-engagement:** Exhibited "relentless focus" and tenacity to re-establish contact with unresponsive stakeholders, ensuring the customer's voice was heard internally.
+- **Cross-Functional Collaboration:** Partnered deeply with the Internal Renewals Manager and Account Executive (AE) to apply a solutions-based approach, removing friction points that were stalling the partnership.
+- **Tactical Renewal Strategy:** Negotiated a partial renewal to de-risk the immediate threat, deliberately setting the stage for a full renewal and expansion in the following quarter.
+
+**Outcome:**
+- **Successful Retention:** Saved the account from churning and stabilized the relationship.
+- **Strategic Win:** The partial renewal successfully bridged the account to a full, multi-year renewal the following quarter.
+- **The "Gold Standard":** Management explicitly cited Nic's persistence as the critical factor in retaining the client, describing his handling of the account as the **"Gold Standard, World Class, and Role Model."**
+
+## CASE STUDY 4: SCALING STRATEGIC SUCCESS DURING ACQUISITION (MASTERCARD TRANSITION)
+**Keywords:** Adaptability, Scalability, Operational Excellence, M&A Integration, Portfolio Management.
+
+**The Problem:**
+Following Recorded Future's acquisition by Mastercard, Nicholas transitioned into the Principal role and was immediately tasked with managing a doubled portfolio of high-value enterprise accounts. The challenge was to maintain deep strategic relationships and high ARR growth without being pulled into an unscalable, reactive technical support loop.
+
+**Action taken by Nic:**
+- **Rapid Operational Adaptation:** Successfully transitioned into the Principal mindset within two months, balancing high-level strategy with increased account volume.
+- **Scalable Program Development:** Engineered a "sustainable scale" framework to manage the load, including:
+    - **Customer "Office Hours":** Creating high-leverage touchpoints for multiple clients simultaneously.
+    - **Local Champions Group:** Building a community of power users to drive organic adoption.
+    - **Data-Driven Intelligence:** Developed custom reporting within the CSM platform to proactively identify emerging champions and high-risk users before they impacted the health score.
+- **Strategic Business Reviews (SBRs):** Executed a high volume of SBRs to ensure account alignment with the new Mastercard-backed roadmap.
+
+**Outcome:**
+- **Zero-Disruption Transition:** Led the migration of 18 major A/NZ accounts with no degradation in customer experience.
+- **Exceptional Growth:** Secured 9 major customer wins in the first full quarter.
+- **Portfolio Impact:** Successfully doubled the ARR of the managed portfolio while maintaining an exceptional sub-10% churn rate—far exceeding industry benchmarks during an acquisition phase.
+
 ---
 
 # VII. NICBOT POWER FAQ
