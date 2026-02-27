@@ -1,147 +1,127 @@
 import streamlit as st
 from google import genai
-import datetime
 
-# 1. Page Config (Must remain the first Streamlit command)
+# 1. Page Config
 st.set_page_config(page_title="NicBot", page_icon="🤖", layout="wide")
 
-# 2. Branding & Styling Block (Glassmorphism & Pulse Animations)
-st.markdown("""
+# 2. Theme State Initialization
+if "theme" not in st.session_state:
+    st.session_state.theme = "dark"
+
+def toggle_theme():
+    st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
+
+# 3. Dynamic CSS Injection
+if st.session_state.theme == "dark":
+    # --- DARK MODE (Deep Slate) ---
+    bg_color = "#0d1117"
+    text_color = "#f0f6fc"
+    card_bg = "rgba(255, 255, 255, 0.07)"
+    card_border = "rgba(255, 255, 255, 0.15)"
+    sidebar_bg = "#161b22"
+    accent = "#58a6ff"
+else:
+    # --- LIGHT MODE (Professional Clean) ---
+    bg_color = "#ffffff"
+    text_color = "#1f2328"
+    card_bg = "#f6f8fa"
+    card_border = "#d0d7de"
+    sidebar_bg = "#f3f4f6"
+    accent = "#0969da"
+
+st.markdown(f"""
     <style>
-    /* Dark Glassmorphism Theme */
-    .stApp {
-        background: linear-gradient(135deg, #0e1117 0%, #1c1f26 100%);
-        color: #e0e0e0;
-    }
+    .stApp {{
+        background-color: {bg_color};
+        color: {text_color};
+        font-family: 'Inter', -apple-system, sans-serif;
+        transition: all 0.3s ease;
+    }}
     
-    /* Frosted Glass Sidebar */
-    [data-testid="stSidebar"] {
-        background: rgba(14, 17, 23, 0.85) !important;
-        backdrop-filter: blur(15px);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    /* Layout Spacing */
+    [data-testid="stChatMessageContainer"] {{
+        padding-left: 12% !important;
+        padding-right: 12% !important;
+        max-width: 1200px;
+        margin: 0 auto;
+    }}
 
-    /* Thinking Pulse Animation */
-    @keyframes pulse-glow {
-        0% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); border-color: rgba(0, 255, 255, 0.2); }
-        50% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); border-color: rgba(0, 255, 255, 0.6); }
-        100% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.2); border-color: rgba(0, 255, 255, 0.2); }
-    }
+    /* Message Bubble Refinement */
+    .stChatMessage {{
+        background-color: {card_bg} !important;
+        border: 1px solid {card_border} !important;
+        border-radius: 16px !important;
+        padding: 24px !important;
+        margin-bottom: 20px !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }}
 
-    .thinking-bubble {
-        border: 1px solid #00ffff;
-        animation: pulse-glow 1.5s infinite ease-in-out;
-        background: rgba(0, 255, 255, 0.05);
-        border-radius: 15px;
-        padding: 10px 20px;
-        color: #00ffff;
+    /* Sidebar Styling */
+    [data-testid="stSidebar"] {{
+        background-color: {sidebar_bg} !important;
+        border-right: 1px solid {card_border};
+    }}
+
+    /* Pulse Thinking Animation */
+    .thinking-bubble {{
+        border: 1.5px solid {accent};
+        background: {card_bg};
+        border-radius: 12px;
+        padding: 12px 24px;
+        color: {accent};
+        font-weight: 600;
         width: fit-content;
-        font-family: 'Helvetica Neue', sans-serif;
-        font-size: 0.9em;
-        margin-bottom: 15px;
-    }
+        animation: pulse 2s infinite;
+    }}
 
-    /* Glass Cards for Chat Messages */
-    .stChatMessage {
-        background: rgba(255, 255, 255, 0.03) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        border-radius: 15px !important;
-        backdrop-filter: blur(5px);
-    }
+    @keyframes pulse {{
+        0% {{ opacity: 0.5; }}
+        50% {{ opacity: 1; }}
+        100% {{ opacity: 0.5; }}
+    }}
 
-    /* Recruiter Button Styling */
-    div.stButton > button {
-        background: rgba(0, 255, 255, 0.1) !important;
-        border: 1px solid rgba(0, 255, 255, 0.3) !important;
-        color: #00ffff !important;
-        transition: all 0.3s ease !important;
-    }
-    div.stButton > button:hover {
-        transform: translateY(-2px);
-        background: rgba(0, 255, 255, 0.2) !important;
-        border-color: #00ffff !important;
-    }
+    /* Interaction Elements */
+    div.stButton > button {{
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+    }}
     </style>
     """, unsafe_allow_html=True)
 
-# 3. Sidebar with Heatmap/Recruiter Toggles
+# 4. Sidebar Tools
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/artificial-intelligence.png")
     st.title("NicBot v3.0")
-    st.info("**Principal Strategic Advocate**")
+    
+    # Theme Toggle
+    theme_label = "🌙 Dark Mode" if st.session_state.theme == "light" else "☀️ Light Mode"
+    st.button(theme_label, on_click=toggle_theme)
     
     st.write("---")
-    # Recruiter Specific Features
     st.subheader("🎯 Recruiter Tools")
     recruiter_mode = st.toggle("Enable Recruiter Insights")
-    if st.button("Generate Exec Summary"):
+    if st.button("✨ Generate Exec Summary"):
         st.session_state.exec_summary_trigger = True
     
     st.write("---")
-    st.caption("Built with Gemini 2.5 & Streamlit")
-    st.sidebar.caption("🔒 **Security Note:** RAG architecture verified. No sensitive IP stored.")
+    st.caption("2026 Edition | Principal Strategy Bot")
 
-# 4. Setup Client & Load Context
+# 5. Client & Context
 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
-
 try:
     with open("bio.txt", "r") as f:
         context = f.read()
 except FileNotFoundError:
-    context = "Bio info missing."
+    context = "Professional history context unavailable."
 
-# 5. Initialization
+# 6. UI Header
+st.title("🤖 NicBot")
+st.markdown(f"<p style='color:{accent}; font-weight:bold;'>Strategic Advisory & Cyber Intelligence</p>", unsafe_allow_html=True)
+
+# 7. Chat Display
 if "messages" not in st.session_state:
     st.session_state.messages = []
-if "interest_heatmap" not in st.session_state:
-    st.session_state.interest_heatmap = {"Technical": 0, "Leadership": 0, "Cultural": 0}
 
-# 6. Page Title & UI
-st.title("🤖 NicBot")
-if recruiter_mode:
-    st.success("Recruiter Mode Active: I will prioritize ROI, Scale, and Leadership metrics.")
-
-# 7. Display Chat History
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-
-# 8. Handling Exec Summary (Button Trigger)
-if st.session_state.get("exec_summary_trigger"):
-    st.session_state.exec_summary_trigger = False
-    summary_prompt = "Generate a 3-bullet pitch for a hiring manager based on Nic's profile."
-    # This acts like a user prompt automatically
-    st.chat_input(value=summary_prompt, key="auto_prompt") 
-
-# 9. Main Chat Logic
-if prompt := st.chat_input("Ask about Nic's experience..."):
-    # Analytics Layer: Interest Heatmap tracking
-    if any(word in prompt.lower() for word in ["scale", "arr", "growth"]): st.session_state.interest_heatmap["Technical"] += 1
-    if any(word in prompt.lower() for word in ["lead", "mentor", "culture"]): st.session_state.interest_heatmap["Leadership"] += 1
-    
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user"):
-        st.markdown(prompt)
-
-    with st.chat_message("assistant"):
-        # Glassmorphism Thinking Animation
-        thinking_placeholder = st.empty()
-        thinking_placeholder.markdown('<div class="thinking-bubble">Synthesizing strategic insights...</div>', unsafe_allow_html=True)
-        
-        # System Instruction tailoring based on Recruiter Mode
-        persona = "You are NicBot, a Principal-level Strategic Advisor."
-        if recruiter_mode:
-            persona += " Focus on ROI, revenue impact, and leadership scaling."
-            
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=prompt,
-            config={
-                'system_instruction': f"{persona} Context: {context}"
-            }
-        )
-        
-        # Clear thinking pulse and show response
-        thinking_placeholder.empty()
-        st.markdown(response.text)
-        st.session_state.messages.append({"role": "assistant", "content": response.text})
+        st.markdown(
