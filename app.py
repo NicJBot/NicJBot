@@ -11,7 +11,7 @@ if "theme" not in st.session_state:
 def toggle_theme():
     st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
 
-# 3. High-Contrast CSS (No Chips, Improved Readability)
+# 3. High-Contrast CSS
 if st.session_state.theme == "dark":
     bg_color, text_color, card_bg = "#0d1117", "#FFFFFF", "#1c2128"
     card_border, sidebar_bg, accent = "#444c56", "#161b22", "#58a6ff"
@@ -24,7 +24,6 @@ st.markdown(f"""
     .stApp {{ background-color: {bg_color}; color: {text_color}; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }}
     [data-testid="stChatMessageContainer"] {{ padding-left: 10% !important; padding-right: 10% !important; max-width: 1100px; margin: 0 auto; }}
     
-    /* High Visibility Chat Bubbles */
     .stChatMessage {{ 
         background-color: {card_bg} !important; 
         border: 1px solid {card_border} !important; 
@@ -33,7 +32,6 @@ st.markdown(f"""
         margin-bottom: 25px !important; 
     }}
     
-    /* Force high contrast for all text elements */
     .stChatMessage p, .stChatMessage li, .stChatMessage span, .stChatMessage div {{ 
         color: {text_color} !important; 
         font-size: 1.05rem !important; 
@@ -54,19 +52,30 @@ st.markdown(f"""
     }}
     @keyframes pulse {{ 0% {{ opacity: 0.6; }} 50% {{ opacity: 1; }} 100% {{ opacity: 0.6; }} }}
 
-    /* Button Styling */
     div.stButton > button {{ border-radius: 10px !important; font-weight: 600 !important; width: 100% !important; }}
     </style>
     """, unsafe_allow_html=True)
 
-# 4. Sidebar
+# 4. Sidebar with Recruiter Mode Guide
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/artificial-intelligence.png")
     st.title("NicBot v3.0")
     st.button("☀️ Light Mode" if st.session_state.theme == "dark" else "🌙 Dark Mode", on_click=toggle_theme)
     st.write("---")
+    
     st.subheader("🎯 Recruiter Tools")
-    recruiter_mode = st.toggle("Enable Recruiter Insights")
+    recruiter_mode = st.toggle("Enable Recruiter Mode")
+    
+    # Recruiter Guide Content
+    if recruiter_mode:
+        st.info("💡 **Recruiter Guide Active**\n\nPrompts are now optimized for ROI and Leadership metrics.")
+        with st.expander("Suggested Prompts"):
+            st.markdown("""
+            * **Scale:** 'How did you double your portfolio ARR?'
+            * **Retention:** 'Tell me about the major superannuation turnaround.'
+            * **Technical:** 'How do you use AI to scale account discovery?'
+            * **Leadership:** 'Describe your collegiate leadership style.'
+            """)
     
     if st.button("✨ Generate Exec Summary"):
         st.session_state.summary_trigger = True
@@ -86,7 +95,6 @@ except FileNotFoundError:
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display History
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
@@ -94,28 +102,27 @@ for message in st.session_state.messages:
 # 7. Input Handling
 prompt = st.chat_input("Ask Nicholas anything...")
 
-# Check if summary button was pressed
 if st.session_state.get("summary_trigger"):
     st.session_state.summary_trigger = False
     prompt = "Generate a 3-bullet executive summary for a hiring manager based on the context."
     st.session_state.messages.append({"role": "user", "content": "*(System Request)* Generate Executive Summary"})
 
 if prompt:
-    # Append user message to state and UI (if not system request)
     if not prompt.startswith("Generate a 3-bullet"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
-    # Assistant Response logic
+    # 8. Assistant Response logic
     with st.chat_message("assistant"):
         think = st.empty()
         think.markdown(f'<div class="thinking-bubble">Analyzing strategic data...</div>', unsafe_allow_html=True)
         
-        # System instructions enforcing anonymity
-        persona = "You are NicBot, a Principal-level Strategic Advisor. CRITICAL: Never name specific customers. Use industry descriptors (e.g., 'Major Superannuation Fund', 'Tier-1 Bank')."
+        persona = "You are NicBot, a Principal-level Strategic Advisor. CRITICAL: Never name specific customers. Use industry descriptors."
+        
+        # Adaptive Persona for Recruiter Mode
         if recruiter_mode:
-            persona += " Focus on ROI, revenue impact, and leadership scaling."
+            persona += " Focus intensely on ROI, revenue impact, and leadership scaling. Be direct and executive-focused."
             
         response = client.models.generate_content(
             model='gemini-2.5-flash',
