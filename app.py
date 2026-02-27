@@ -58,16 +58,6 @@ with st.sidebar:
     st.markdown(f'<a href="{mailto_link}" target="_blank" style="text-decoration:none;"><div style="background-color:{accent};color:white;padding:10px;border-radius:10px;text-align:center;font-weight:bold;">📧 I\'m Interested - Email Nic</div></a>', unsafe_allow_html=True)
     
     st.write("---")
-    
-    # Developer/Review Section
-    with st.expander("🔐 Session Debug (Dev Only)"):
-        st.caption("Review current conversation flow:")
-        if "messages" in st.session_state:
-            transcript = ""
-            for msg in st.session_state.messages:
-                transcript += f"{msg['role'].upper()}: {msg['content']}\n\n"
-            st.text_area("Session Transcript", value=transcript, height=200)
-    
     st.caption("2026 Edition | Privacy-First Architecture")
 
 # 5. Client & Context
@@ -125,7 +115,6 @@ if prompt:
             st.write("---")
             st.markdown("### ⚡ Principal Competency Matrix")
             
-            # Using standard Streamlit columns and progress bars for maximum stability
             col1, col2 = st.columns(2)
             with col1:
                 st.write("**Threat Intelligence (GCTI)**")
