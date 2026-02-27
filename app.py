@@ -11,10 +11,9 @@ if "theme" not in st.session_state:
 def toggle_theme():
     st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
 
-# 3. Enhanced Contrast CSS
+# 3. High-Contrast CSS (No Chips, Improved Readability)
 if st.session_state.theme == "dark":
-    # High-contrast white text for dark mode
-    bg_color, text_color, card_bg = "#0d1117", "#FFFFFF", "rgba(255, 255, 255, 0.12)"
+    bg_color, text_color, card_bg = "#0d1117", "#FFFFFF", "#1c2128"
     card_border, sidebar_bg, accent = "#444c56", "#161b22", "#58a6ff"
 else:
     bg_color, text_color, card_bg = "#ffffff", "#1f2328", "#f6f8fa"
@@ -31,20 +30,32 @@ st.markdown(f"""
         border: 1px solid {card_border} !important; 
         border-radius: 12px !important; 
         padding: 24px !important; 
-        margin-bottom: 20px !important; 
-        color: {text_color} !important; 
+        margin-bottom: 25px !important; 
     }}
     
-    /* Ensure markdown text inside bubbles is also white */
-    .stChatMessage p, .stChatMessage li {{ color: {text_color} !important; font-size: 1.05rem !important; }}
+    /* Force high contrast for all text elements */
+    .stChatMessage p, .stChatMessage li, .stChatMessage span, .stChatMessage div {{ 
+        color: {text_color} !important; 
+        font-size: 1.05rem !important; 
+        line-height: 1.6 !important;
+    }}
     
     [data-testid="stSidebar"] {{ background-color: {sidebar_bg} !important; border-right: 1px solid {card_border}; }}
     
-    .thinking-bubble {{ border: 2px solid {accent}; background: {card_bg}; border-radius: 10px; padding: 12px 24px; color: {accent}; font-weight: bold; width: fit-content; animation: pulse 2s infinite; }}
+    .thinking-bubble {{ 
+        border: 2px solid {accent}; 
+        background: {card_bg}; 
+        border-radius: 10px; 
+        padding: 12px 24px; 
+        color: {accent}; 
+        font-weight: bold; 
+        width: fit-content; 
+        animation: pulse 2s infinite; 
+    }}
     @keyframes pulse {{ 0% {{ opacity: 0.6; }} 50% {{ opacity: 1; }} 100% {{ opacity: 0.6; }} }}
-    
-    /* Action Chips */
-    div.stButton > button {{ border-radius: 20px !important; font-weight: 600 !important; width: 100% !important; border: 1px solid {accent} !important; }}
+
+    /* Button Styling */
+    div.stButton > button {{ border-radius: 10px !important; font-weight: 600 !important; width: 100% !important; }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -56,65 +67,62 @@ with st.sidebar:
     st.write("---")
     st.subheader("🎯 Recruiter Tools")
     recruiter_mode = st.toggle("Enable Recruiter Insights")
+    
     if st.button("✨ Generate Exec Summary"):
-        st.session_state.chip_input = "Generate a 3-bullet executive summary for a hiring manager."
+        st.session_state.summary_trigger = True
+    
     st.write("---")
-    st.caption("2026 Edition | Privacy Protected")
+    st.caption("2026 Edition | Privacy-First Architecture")
 
 # 5. Client & Context
 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 try:
     with open("bio.txt", "r") as f:
-        # SCRUBBING CUSTOMER NAMES ON THE FLY FOR EXTRA SAFETY
-        context = f.read().replace("UniSuper", "Major Superannuation Fund").replace("Medibank", "Major Private Health Insurer").replace("Mastercard", "Global Financial Services Corporation")
+        context = f.read()
 except FileNotFoundError:
-    context = "Professional history unavailable."
+    context = "Professional context unavailable."
 
-# 6. Chat Logic
+# 6. Chat Initialization
 if "messages" not in st.session_state:
     st.session_state.messages = []
-if "chip_input" not in st.session_state:
-    st.session_state.chip_input = None
 
 # Display History
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# 7. Unified Input Logic (Manual or Chip)
-user_input = st.chat_input("Ask Nicholas anything...")
-if st.session_state.chip_input:
-    user_input = st.session_state.chip_input
-    st.session_state.chip_input = None # Reset chip
+# 7. Input Handling
+prompt = st.chat_input("Ask Nicholas anything...")
 
-if user_input:
-    st.session_state.messages.append({"role": "user", "content": user_input})
-    with st.chat_message("user"):
-        st.markdown(user_input)
+# Check if summary button was pressed
+if st.session_state.get("summary_trigger"):
+    st.session_state.summary_trigger = False
+    prompt = "Generate a 3-bullet executive summary for a hiring manager based on the context."
+    st.session_state.messages.append({"role": "user", "content": "*(System Request)* Generate Executive Summary"})
 
+if prompt:
+    # Append user message to state and UI (if not system request)
+    if not prompt.startswith("Generate a 3-bullet"):
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+            st.markdown(prompt)
+
+    # Assistant Response logic
     with st.chat_message("assistant"):
         think = st.empty()
         think.markdown(f'<div class="thinking-bubble">Analyzing strategic data...</div>', unsafe_allow_html=True)
         
-        persona = "You are NicBot. CRITICAL: Never name specific customers like UniSuper or Medibank. Use industry descriptors instead."
-        if recruiter_mode: persona += " Prioritize ROI and leadership scaling."
+        # System instructions enforcing anonymity
+        persona = "You are NicBot, a Principal-level Strategic Advisor. CRITICAL: Never name specific customers. Use industry descriptors (e.g., 'Major Superannuation Fund', 'Tier-1 Bank')."
+        if recruiter_mode:
+            persona += " Focus on ROI, revenue impact, and leadership scaling."
             
         response = client.models.generate_content(
             model='gemini-2.5-flash',
-            contents=user_input,
+            contents=prompt,
             config={'system_instruction': f"{persona} Context: {context}"}
         )
         
         think.empty()
         st.markdown(response.text)
         st.session_state.messages.append({"role": "assistant", "content": response.text})
-        
-        # 8. Functional Action Chips
-        st.write("---")
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            if st.button("📈 Retention Case"): st.session_state.chip_input = "Tell me about your strategy for saving the major superannuation account." ; st.rerun()
-        with c2: 
-            if st.button("🚀 Portfolio Scale"): st.session_state.chip_input = "How did you double your portfolio during the acquisition?" ; st.rerun()
-        with c3:
-            if st.button("💡 AI Discovery"): st.session_state.chip_input = "Explain your AI-augmented discovery process." ; st.rerun()
