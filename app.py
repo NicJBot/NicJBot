@@ -53,10 +53,13 @@ st.markdown(f"""
     @keyframes pulse {{ 0% {{ opacity: 0.6; }} 50% {{ opacity: 1; }} 100% {{ opacity: 0.6; }} }}
 
     div.stButton > button {{ border-radius: 10px !important; font-weight: 600 !important; width: 100% !important; }}
+    
+    /* Share Button Hover Effect */
+    .share-btn:hover {{ opacity: 0.8; transform: translateY(-1px); }}
     </style>
     """, unsafe_allow_html=True)
 
-# 4. Sidebar with Recruiter Mode Guide
+# 4. Sidebar with Recruiter Mode Guide & Feedback
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/artificial-intelligence.png")
     st.title("NicBot v3.0")
@@ -66,7 +69,6 @@ with st.sidebar:
     st.subheader("🎯 Recruiter Tools")
     recruiter_mode = st.toggle("Enable Recruiter Mode")
     
-    # Recruiter Guide Content
     if recruiter_mode:
         st.info("💡 **Recruiter Guide Active**\n\nPrompts are now optimized for ROI and Leadership metrics.")
         with st.expander("Suggested Prompts"):
@@ -79,6 +81,50 @@ with st.sidebar:
     
     if st.button("✨ Generate Exec Summary"):
         st.session_state.summary_trigger = True
+    
+    st.write("---")
+    
+    # --- Recruiter Interest Button ---
+    st.subheader("📩 Immediate Interest")
+    contact_email = "your-email@example.com" 
+    mailto_link = f"mailto:{contact_email}?subject=Interest from NicBot&body=Hi Nic, I've been interacting with NicBot and would like to schedule a time to chat."
+    
+    st.markdown(f"""
+        <a href="{mailto_link}" target="_blank" style="text-decoration: none;">
+            <div style="background-color: {accent}; color: white; padding: 10px; border-radius: 10px; text-align: center; font-weight: bold;">
+                📧 I'm Interested - Email Nic
+            </div>
+        </a>
+    """, unsafe_allow_html=True)
+
+    # --- NEW: Share NicBot Button ---
+    st.write("")
+    # Get the URL of the app (Streamlit Cloud usually uses this)
+    app_url = "https://nicjbot.streamlit.app" 
+    share_text = "Check out NicBot—a custom AI built by Nicholas to showcase his experience as a Principal Strategic Advocate."
+    
+    # Simple JavaScript copy-to-clipboard button
+    st.components.v1.html(f"""
+        <button onclick="copyLink()" style="
+            width: 100%; 
+            background-color: transparent; 
+            color: {accent}; 
+            border: 1px solid {accent}; 
+            padding: 8px; 
+            border-radius: 10px; 
+            font-weight: bold; 
+            cursor: pointer;
+            font-family: sans-serif;
+        ">
+            🔗 Share NicBot Link
+        </button>
+        <script>
+        function copyLink() {{
+            navigator.clipboard.writeText('{app_url}');
+            alert('NicBot link copied to clipboard!');
+        }}
+        </script>
+    """, height=50)
     
     st.write("---")
     st.caption("2026 Edition | Privacy-First Architecture")
@@ -118,11 +164,10 @@ if prompt:
         think = st.empty()
         think.markdown(f'<div class="thinking-bubble">Analyzing strategic data...</div>', unsafe_allow_html=True)
         
-        persona = "You are NicBot, a Principal-level Strategic Advisor. CRITICAL: Never name specific customers. Use industry descriptors."
+        persona = "You are NicBot, a Principal-level Strategic Advisor. CRITICAL: Never name specific customers."
         
-        # Adaptive Persona for Recruiter Mode
         if recruiter_mode:
-            persona += " Focus intensely on ROI, revenue impact, and leadership scaling. Be direct and executive-focused."
+            persona += " Focus intensely on ROI, revenue impact, and leadership scaling."
             
         response = client.models.generate_content(
             model='gemini-2.5-flash',
